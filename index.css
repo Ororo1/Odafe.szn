@@ -53,6 +53,11 @@ body {
     position: relative;
 }
 
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
 /* Custom Scrollbar for Webkit */
 ::-webkit-scrollbar {
     width: 6px;
@@ -427,7 +432,7 @@ button {
 .hero-title {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-size: clamp(1.5rem, 6.2vw, 5rem);
     line-height: 0.95;
     letter-spacing: -0.03em;
     margin-bottom: 30px;
@@ -1260,6 +1265,10 @@ button {
         padding-left: 40px;
         padding-right: 40px;
     }
+    .hero-content {
+        margin-left: 20px;
+        max-width: 800px;
+    }
     .main-footer {
         padding: 60px 40px 30px;
     }
@@ -1295,6 +1304,9 @@ button {
     .about-container {
         grid-template-columns: 1fr;
     }
+    .about-visual {
+        margin-bottom: 45px; /* prevent negative absolute accent card from overlapping content below */
+    }
     .about-img-wrap {
         max-width: 100%;
         height: 550px;
@@ -1307,7 +1319,7 @@ button {
         left: 40px;
     }
     .lookbook-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
     }
     .grid-item.wide {
         grid-column: span 1; /* reset on mobile */
@@ -1315,11 +1327,24 @@ button {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --header-height: 70px;
+    }
     .hero-content {
-        margin-left: 20px;
+        margin: 0 auto;
     }
     .hero-tech-specs {
         display: none;
+    }
+    .hero-scroll-indicator {
+        display: none;
+    }
+    .grid-item.tall {
+        grid-row: span 1; /* prevent tall items from stretching disproportionately on mobile */
+    }
+    .about-stats {
+        flex-wrap: wrap;
+        gap: 20px;
     }
     .section-header {
         flex-direction: column;
@@ -1340,12 +1365,29 @@ button {
         flex-direction: column;
         gap: 20px;
     }
+    .lightbox {
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 80px 20px 40px;
+    }
+    .lightbox-close {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1200;
+    }
     .lightbox-nav {
-        display: none; /* remove overlays nav for smaller screens, use swipe or tap list */
+        display: none; /* remove overlay nav buttons on small screens; swipe is used instead */
+    }
+    .lightbox-img-wrap {
+        height: 300px;
     }
 }
 
 @media (max-width: 480px) {
+    :root {
+        --header-height: 60px;
+    }
     .header-container {
         padding: 0 20px;
     }
@@ -1363,5 +1405,12 @@ button {
     .lookbook-section, .about-section, .contact-section {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+    .lightbox-img-wrap {
+        height: 250px;
     }
 }

@@ -273,6 +273,31 @@ document.addEventListener('DOMContentLoaded', () => {
         navLightbox(1);
     });
 
+    // Touch swipe gestures for mobile carousel navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    }, { passive: true });
+
+    const handleSwipeGesture = () => {
+        const swipeThreshold = 50; // minimum swipe distance in pixels
+        if (touchEndX < touchStartX - swipeThreshold) {
+            // Swiped left (next)
+            navLightbox(1);
+        }
+        if (touchEndX > touchStartX + swipeThreshold) {
+            // Swiped right (previous)
+            navLightbox(-1);
+        }
+    };
+
     // Keyboard navigation in lightbox
     document.addEventListener('keydown', (e) => {
         if (!lightbox.classList.contains('active')) return;

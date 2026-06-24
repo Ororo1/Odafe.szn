@@ -716,6 +716,7 @@ button {
     grid-template-columns: 1.1fr 1fr;
     gap: 80px;
     align-items: center;
+    overflow: hidden;
 }
 
 .about-visual {
@@ -800,11 +801,13 @@ button {
 
 .about-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-size: clamp(1.6rem, 4vw, 3rem);
     line-height: 1.1;
     font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 30px;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 .about-divider {
@@ -888,11 +891,12 @@ button {
 
 .contact-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-size: clamp(1.5rem, 4vw, 3rem);
     font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 20px;
     line-height: 1.1;
+    overflow-wrap: break-word;
 }
 
 .contact-description {
@@ -926,6 +930,14 @@ button {
     font-size: 1rem;
     font-weight: 500;
     color: var(--color-text);
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.detail-value:hover {
+    color: var(--color-red);
 }
 
 /* Contact Form */
@@ -1334,6 +1346,7 @@ button {
 
     .about-container {
         grid-template-columns: 1fr;
+        overflow: hidden;
     }
     .about-visual {
         margin-bottom: 60px;
@@ -1346,6 +1359,9 @@ button {
     .contact-container {
         grid-template-columns: 1fr;
         gap: 50px;
+    }
+    .contact-title {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
     }
 
     .hero-scroll-indicator {
@@ -1434,6 +1450,9 @@ button {
     .about-section {
         padding: 80px 24px;
     }
+    .about-title {
+        font-size: clamp(1.4rem, 6vw, 2.2rem);
+    }
     .about-stats {
         flex-wrap: wrap;
         gap: 20px;
@@ -1445,6 +1464,12 @@ button {
     /* Contact */
     .contact-section {
         padding: 80px 24px;
+    }
+    .contact-title {
+        font-size: clamp(1.3rem, 6vw, 2rem);
+    }
+    .detail-value {
+        font-size: 0.9rem;
     }
     .form-row {
         grid-template-columns: 1fr;
@@ -1537,6 +1562,9 @@ button {
     .about-section {
         padding: 60px 18px;
     }
+    .about-title {
+        font-size: clamp(1.2rem, 7vw, 1.8rem);
+    }
     .about-img-wrap {
         height: 320px;
     }
@@ -1544,6 +1572,13 @@ button {
         position: static;
         margin-top: 20px;
         max-width: 100%;
+    }
+    .about-stats {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .stat-num {
+        font-size: 1.8rem;
     }
 
     /* Contact */

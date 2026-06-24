@@ -339,24 +339,39 @@ document.addEventListener('DOMContentLoaded', () => {
     inquiryForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // Gather form values
+        const nameVal     = document.getElementById('name').value.trim();
+        const emailVal    = document.getElementById('email').value.trim();
+        const interestEl  = document.getElementById('interest');
+        const interestVal = interestEl.options[interestEl.selectedIndex].text;
+        const messageVal  = document.getElementById('message').value.trim();
+
         // Visual loading state
         submitBtn.disabled = true;
-        submitBtnText.innerText = 'SENDING...';
+        submitBtnText.innerText = 'OPENING MAIL…';
         formMessage.style.display = 'none';
 
-        // Simulate network inquiry request
+        // Build a pre-filled mailto: link so the inquiry is actually sent
+        const recipient = 'francisodafewilliams@gmail.com';
+        const subject   = encodeURIComponent(`[ODAFE Inquiry] ${interestVal} — ${nameVal}`);
+        const body      = encodeURIComponent(
+            `Name: ${nameVal}\nEmail: ${emailVal}\nInquiry Type: ${interestVal}\n\n${messageVal}`
+        );
+        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+        // Reset form and show confirmation after a short delay
         setTimeout(() => {
             inquiryForm.reset();
             submitBtn.disabled = false;
             submitBtnText.innerText = 'SEND INQUIRY';
-            
-            formMessage.innerText = 'INQUIRY SENT SECURELY. ODAFE STUDIO WILL CONTACT YOU SHORTLY.';
+
+            formMessage.innerText = 'YOUR EMAIL CLIENT HAS BEEN OPENED. THANK YOU FOR REACHING OUT — ODAFE STUDIO WILL REPLY SHORTLY.';
             formMessage.className = 'form-message success';
-            
+
             setTimeout(() => {
                 formMessage.style.display = 'none';
-            }, 6000);
-        }, 1500);
+            }, 8000);
+        }, 800);
     });
 
     // ----------------------------------------------------

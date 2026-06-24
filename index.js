@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxId = document.getElementById('lightboxId');
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxCat = document.getElementById('lightboxCat');
+    const lightboxDesc = document.getElementById('lightboxDesc');
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
@@ -206,12 +207,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemId = item.querySelector('.item-id').innerText;
         const itemTitle = item.querySelector('.item-title').innerText;
         const itemCat = item.querySelector('.item-cat').innerText;
+        const itemDesc = item.getAttribute('data-desc') || '';
 
         lightboxImg.src = innerImg.src;
         lightboxImg.alt = innerImg.alt;
         lightboxId.innerText = itemId;
         lightboxTitle.innerText = itemTitle;
         lightboxCat.innerText = itemCat;
+        lightboxDesc.innerText = itemDesc;
 
         lightbox.classList.add('active');
         document.body.classList.add('no-scroll');
@@ -237,12 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemId = nextItem.querySelector('.item-id').innerText;
             const itemTitle = nextItem.querySelector('.item-title').innerText;
             const itemCat = nextItem.querySelector('.item-cat').innerText;
+            const itemDesc = nextItem.getAttribute('data-desc') || '';
 
             lightboxImg.src = innerImg.src;
             lightboxImg.alt = innerImg.alt;
             lightboxId.innerText = itemId;
             lightboxTitle.innerText = itemTitle;
             lightboxCat.innerText = itemCat;
+            lightboxDesc.innerText = itemDesc;
 
             lightboxImg.style.opacity = '1';
             lightboxImg.style.transform = 'scale(1)';

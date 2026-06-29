@@ -842,8 +842,9 @@ button {
     font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 30px;
-    word-break: normal;
-    overflow-wrap: break-word;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
 }
 
 .about-divider {
@@ -1609,7 +1610,7 @@ button {
         padding: 60px 18px;
     }
     .about-title {
-        font-size: clamp(1.2rem, 7vw, 1.8rem);
+        font-size: clamp(1rem, 5vw, 1.6rem);
     }
     .about-img-wrap {
         height: 320px;

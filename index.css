@@ -1450,6 +1450,16 @@ button {
     .about-section {
         padding: 80px 24px;
     }
+    .about-visual {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+    .about-accent-card {
+        position: static;
+        margin-top: 20px;
+        max-width: 100%;
+    }
     .about-title {
         font-size: clamp(1.4rem, 6vw, 2.2rem);
     }
@@ -1567,11 +1577,6 @@ button {
     }
     .about-img-wrap {
         height: 320px;
-    }
-    .about-accent-card {
-        position: static;
-        margin-top: 20px;
-        max-width: 100%;
     }
     .about-stats {
         flex-direction: column;
